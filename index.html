@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ETF Alpha & Macro Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-200 min-h-screen">
+
+    <!-- Header -->
+    <header class="border-b border-slate-800 bg-slate-900/50 backdrop-blur-md sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 py-6 flex justify-between items-center">
+            <h1 class="text-2xl font-bold bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-transparent">
+                Automated ETF Alpha & Macro-Economic Dashboard
+            </h1>
+            <div class="text-xs font-mono text-slate-500 uppercase tracking-widest">v1.0.0</div>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 py-12 space-y-24">
+
+        <!-- Architecture Overview -->
+        <section id="architecture">
+            <div class="flex items-center space-x-4 mb-8">
+                <div class="h-8 w-1 bg-blue-500 rounded-full"></div>
+                <h2 class="text-3xl font-semibold text-white uppercase tracking-tight">Architecture Overview</h2>
+            </div>
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="space-y-6">
+                    <div class="bg-slate-900 p-6 rounded-xl border border-slate-800 shadow-xl">
+                        <h3 class="text-blue-400 font-semibold mb-3 flex items-center">
+                            <span class="mr-2">⚡</span> Python ETL Pipeline
+                        </h3>
+                        <p class="text-slate-400 leading-relaxed">
+                            Robust data extraction using <code class="bg-slate-800 px-1 rounded text-blue-300">yfinance</code> to pull 5 years of daily historical data for SPY, QQQ, and VAS.AX. Features automated data cleaning with forward-fill logic and vectorized technical indicator computation (50-day SMA, 14-day RSI).
+                        </p>
+                    </div>
+                    <div class="bg-slate-900 p-6 rounded-xl border border-slate-800 shadow-xl">
+                        <h3 class="text-emerald-400 font-semibold mb-3 flex items-center">
+                            <span class="mr-2">🤖</span> XGBoost Predictive Model
+                        </h3>
+                        <p class="text-slate-400 leading-relaxed">
+                            A binary classification model built with <code class="bg-slate-800 px-1 rounded text-emerald-300">XGBoost</code>. It predicts if SPY's closing price will exceed its opening price the following day. Implements a rigorous time-series split and lag-based target engineering to ensure zero data leakage.
+                        </p>
+                    </div>
+                </div>
+                <div class="flex flex-col justify-center bg-slate-900/30 p-8 rounded-2xl border border-slate-800 border-dashed">
+                    <h4 class="text-xs font-mono text-slate-500 uppercase mb-4 tracking-wider">Tech Stack</h4>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-3 py-1 bg-slate-800 rounded-full text-sm border border-slate-700">Python 3.12</span>
+                        <span class="px-3 py-1 bg-slate-800 rounded-full text-sm border border-slate-700">Pandas</span>
+                        <span class="px-3 py-1 bg-slate-800 rounded-full text-sm border border-slate-700">XGBoost</span>
+                        <span class="px-3 py-1 bg-slate-800 rounded-full text-sm border border-slate-700">Scikit-Learn</span>
+                        <span class="px-3 py-1 bg-slate-800 rounded-full text-sm border border-slate-700">Tailwind CSS</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Model Insights -->
+        <section id="insights">
+            <div class="flex items-center space-x-4 mb-8">
+                <div class="h-8 w-1 bg-emerald-500 rounded-full"></div>
+                <h2 class="text-3xl font-semibold text-white uppercase tracking-tight">Model Insights</h2>
+            </div>
+            <div class="bg-slate-900 rounded-2xl border border-slate-800 overflow-hidden shadow-2xl">
+                <div class="p-4 border-b border-slate-800 bg-slate-900/80 flex items-center justify-between">
+                    <span class="text-sm font-medium text-slate-400 italic">Global Feature Importance (XGBClassifier)</span>
+                    <div class="flex space-x-2">
+                        <div class="h-3 w-3 rounded-full bg-slate-700"></div>
+                        <div class="h-3 w-3 rounded-full bg-slate-700"></div>
+                    </div>
+                </div>
+                <div class="p-8 flex justify-center bg-white/5">
+                    <img src="feature_importance.png" alt="XGBoost Feature Importance" class="rounded-lg shadow-lg max-w-full h-auto border border-slate-700">
+                </div>
+                <div class="p-6 bg-slate-900 text-sm text-slate-500 text-center border-t border-slate-800">
+                    The chart above highlights the relative influence of daily price action and technical indicators on the next-day price movement prediction.
+                </div>
+            </div>
+        </section>
+
+        <!-- Live Dashboard -->
+        <section id="dashboard" class="pb-20">
+            <div class="flex items-center space-x-4 mb-8">
+                <div class="h-8 w-1 bg-purple-500 rounded-full"></div>
+                <h2 class="text-3xl font-semibold text-white uppercase tracking-tight">Live Dashboard</h2>
+            </div>
+            <div class="aspect-video w-full bg-slate-900 rounded-2xl border-2 border-slate-800 border-dashed flex items-center justify-center group overflow-hidden relative">
+                <div class="absolute inset-0 bg-slate-950/40 group-hover:bg-slate-950/20 transition-colors duration-500"></div>
+                <div class="text-center z-10">
+                    <div class="text-slate-500 mb-2 font-mono text-sm tracking-widest">[ POWER BI IFRAME PLACEHOLDER ]</div>
+                    <p class="text-slate-600 text-xs">Awaiting live report integration...</p>
+                </div>
+                <!-- The iframe is here, just empty for now as requested -->
+                <iframe 
+                    class="absolute inset-0 w-full h-full opacity-0 pointer-events-none" 
+                    src="" 
+                    frameborder="0" 
+                    allowFullScreen="true">
+                </iframe>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="border-t border-slate-900 py-12 bg-black/20">
+        <div class="max-w-6xl mx-auto px-4 text-center text-slate-600 text-sm">
+            <p>&copy; 2026 ETF Analysis Project. Built for professional portfolio presentation.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
